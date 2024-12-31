@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css ">
+  <title>ALTANSCHOO</title>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">ALTANSCHOOL WEB COURSES</a> 
+    <ul class="navbar">
+      <li  class="active"><a href="#home">HOME</a></li>
+      <li><a href="#shop">SHOP</a></li>
+      <li><a href="#blog">BLOG</a></li>
+      <li><a href="#about">ABOUT</a></li>      
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </header>
+
+  <main class="container" id="home">
+    <div class="organic">
+      <img src="/img/image 1.png" alt="">
+      <div class="block">
+        <h1>ORGANIC FASHION</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <button onclick="window.location.href='#';" class="btn">SHOP NOW</button>
+      </div>
+    </div>
+  </main>
+
+  <main class="shop" id="shop">
+    <h2>SHOP BY CATEGORIES</h2>
+    <div class="content">
+      
+      <div><img src="/img/Rectangle 3.png" alt="" class="item img1"></div>
+      <div><img src="/img/Rectangle 5.png" alt="" class="item"></div>
+      <div><img src="/img/Rectangle 4.png" alt="" class="item"></div>
+      <div><img src="/img/Rectangle 6.png" alt="" class="item"></div>
+      <div  class="full-width"><img src="/img/Rectangle 7.png" alt="" class="item full"></div>
+    </div>
+  </main>
+
+  <main class="blog" id="blog">
+    <h2>NEW COLLECTION</h2>
+    <div class="info">
+      <img src="/img/Rectangle 10.png" alt="">
+      <img src="/img/Rectangle 11.png" alt="">
+      <img src="/img/Rectangle 12.png" alt="">
+    </div>
+    <p>Lorem Ipsum is simply dummy text of the printing and <br> typesetting industry.</p>
+  </main>
+
+  <main class="about" id="about">
+    <img src="/img/image 2.png" alt="">
+    <div class="about-us">
+      <h3>ABOUT US</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+      <button class="about-btn">LEARN MORE</button>
+    </div>
+  </main>
+
+  <main class="contact" id="contact">
+    <div class="follow">
+      <h3>FOLLOW US</h3>
+      <form>
+        <input type="text"  name="name" placeholder="Enter your name">
+        <input type="email"  name="email" placeholder="Enter email address">
+        <textarea placeholder="Enter your message"></textarea>
+      </form>
+      <button class="btn-ctc">SUBMIT</button>
+    </div>
+    <img src="/img/Rectangle 19.png" alt="">
+  </main>
+
+  <script>
+
+    window.onload = function() {
+      window.scrollTo(0, 0)
+    }
+
+    // Получаем все элементы меню и секции
+    const menuItems = document.querySelectorAll('.navbar li');
+    const sections = document.querySelectorAll('main');
+
+    // Функция для обновления активного класса в меню
+    function updateActiveMenu() {
+    let currentSectionId = '';
+
+      // Ищем текущую секцию, которая видна в верхней части экрана
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          currentSectionId = section.id;
+        }
+      });
+
+      // Убираем класс 'active' со всех пунктов меню
+      menuItems.forEach(item => {
+        item.classList.remove('active');
+        const link = item.querySelector('a');
+        if (link.getAttribute('href').substring(1) === currentSectionId) {
+          item.classList.add('active');
+        }
+      });
+    }
+
+      // Добавляем обработчик события scroll
+   window.addEventListener('scroll', updateActiveMenu);
+
+    // Также вызываем функцию при загрузке страницы для установки начального активного пункта
+    updateActiveMenu();
+
+  </script>
+
+</body>
+</html>
